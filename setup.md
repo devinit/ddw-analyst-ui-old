@@ -1,20 +1,25 @@
 
-iojs install
-------------
+iojs and npm install for a single user
+--------------------------------------
 
 
-Get nvm ( node version manager ).
+Install nvm ( node version manager ) from https://github.com/creationix/nvm
+
 
 	curl https://raw.githubusercontent.com/creationix/nvm/v0.23.2/install.sh | bash
 
 
-Get io.js using nvm.
+Install io.js using nvm.
+
 
 	nvm install io.js
 
 
-We can now use iojs the same way you would run node for the user who installed it.
+This hooks into your shell startup scripts so you will need to start a new shell or relogin for it to finish installing.
 
+You can now use npm and iojs the same way you would run node.
+
+	npm --help
 	iojs --help
 
 
