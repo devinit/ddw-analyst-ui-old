@@ -1,4 +1,4 @@
 cd `dirname $0`
 
-iojs js/serv.js
+iojs js/serv.js $*
 
