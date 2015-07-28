@@ -1,0 +1,3 @@
+dropdb didat
+createdb didat
+tar -zxvf t/dump_28_07_2015.sql.tar.gz dump_28_07_2015.sql | psql didat
