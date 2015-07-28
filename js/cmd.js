@@ -13,6 +13,10 @@ cmd.run=function(argv)
 {
 	if( argv._[0]=="test" )
 	{
+		var db=require('./db.js');
+		db.test();
+		
+		return;
 	}
 
 	// help text

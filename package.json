@@ -8,12 +8,14 @@
     "url": "https://github.com/xriss/didat.git"
   },
   "dependencies": {
+    "@atomiq/promisify": "0.0.4",
     "browserify": "3.32.1",
     "co": "^4.6.0",
     "csv": "^0.3.7",
     "express": "3.4.8",
     "marked": "^0.3.2",
-    "pg": "^4.4.0",
+    "pg-monitor": "^0.2.0",
+    "pg-promise": "^1.8.1",
     "uglify-js": "2.4.12",
     "watchify": "0.6.1",
     "yargs": "1.1.3"
