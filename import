@@ -1,3 +1,5 @@
+cd `dirname $0`
+
 dropdb didat
 createdb didat
 tar -Ozxvf t/dump_28_07_2015.sql.tar.gz dump_28_07_2015.sql | psql didat
