@@ -214,6 +214,7 @@ bake.dbjson=function(){
 if(!global.argv)
 {
 	var argv = require('yargs').argv; global.argv=argv;
+	require("./cmd.js").defaults(argv);
 	bake.run(argv);
 }
 

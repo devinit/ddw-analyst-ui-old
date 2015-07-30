@@ -55,7 +55,7 @@ didat.setup=function(args)
 	didat.div={};
 	didat.div.master=$(didat.args.master);
 	didat.div.master.empty();
-	didat.div.master.html( plate.replace("{loading}")  );
+	didat.div.master.html( plate.replace("{base}")  );
 
 }
 

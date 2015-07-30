@@ -11,13 +11,7 @@ var print=function(a) { console.log(util.inspect(a,{depth:null})); }
 
 // global.argv
 var argv=require('yargs').argv; global.argv=argv;
-
-// serv html on this port
-argv.port=argv.port||12345;
-
-// use a readonly restricted user so none of this code can do any damage
-// seriously, I'm just pushing SQL across to the server so this is important
-argv.database=argv.database||"postgres://test:test@localhost/didat";
+require("./cmd.js").defaults(argv);
 
 
 app.use(express.logger());

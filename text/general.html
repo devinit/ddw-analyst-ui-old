@@ -1,3 +1,35 @@
 
 #loading
 <div> Loading... </div>
+
+#base
+
+{sql_textarea}
+{sql_buttons}
+{sql_results}
+
+#sql_textarea
+
+<div id="sqltext">
+<textarea rows="10" cols="80">
+
+SELECT 
+	*
+FROM crs_XX_21_04_2015
+WHERE
+	year = 2010
+LIMIT 10
+
+</textarea>
+</div>
+
+#sql_buttons
+
+<div id="buttons">
+<a id="query" >QUERY</a>
+</div>
+
+#sql_results
+
+<div id="results">
+</div>
