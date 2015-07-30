@@ -20,9 +20,9 @@ app.use(express.logger());
 app.use(express.json());
 
 
-//app.use("/q",function (req, res) {
-//	require("./query").serv(req,res);
-//});
+app.use("/q",function (req, res) {
+	require("./q").serv(req,res);
+});
 
 app.use(express.compress());
 app.use(express.static(__dirname+"/../static"));

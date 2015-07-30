@@ -13,6 +13,7 @@ Install io.js using nvm.
 
 
 	nvm install io.js
+	nvm alias default iojs
 
 
 This hooks into your shell startup scripts so you will need to start a new shell or relogin for it to finish installing.
