@@ -22,8 +22,8 @@ didat.setup=function(args)
 	if(!args.css) // can totally override with args
 	{
 		args.css=[
-				args.art+"/didat.css",
-				args.art+"chosen.min.css",
+				args.art+"didat.css",
+				args.art+"chosen/chosen.min.css",
 		];
 	}
 	if(args.css) { head.load(args.css); }
