@@ -11,16 +11,25 @@ var ls=function(a) { console.log(util.inspect(a,{depth:null})); }
 
 cmd.run=function(argv)
 {
-	if( argv._[0]=="test" )
-	{
-		var db=require('./db.js');
-		db.test();
-		
-		return;
-	}
+	if( argv._[0]=="bake" )		{		return require('./bake.js').run();		}
+	else
+	if( argv._[0]=="dbjson" )	{		return require('./bake.js').dbjson();	}
+	else
+	if( argv._[0]=="test" )		{		return require('./db.js').test();		}
 
 	// help text
 	console.log(
+		"\n"+
+		">	bake \n"+
+		"\n"+
+		"Bake the code, output js and min.js files.\n"+
+		"\n"+
+		"\n"+
+		"\n"+
+		">	dbjson \n"+
+		"\n"+
+		"Scan DB for unique codes and save as json data for use at runtime.\n"+
+		"\n"+
 		"\n"+
 		">	test \n"+
 		"\n"+
