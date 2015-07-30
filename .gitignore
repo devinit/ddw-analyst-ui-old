@@ -1,4 +1,16 @@
-node_modules
+# temp and test files
+
 tmp
 
+
+# run npm install to the node dependencies
+
+node_modules
+
+
+# these are build by running ./bake so do not check them in
+
+js/chunks.json
+www/js/didat.js
+www/js/didat.min.js
 
