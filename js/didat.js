@@ -15,16 +15,15 @@ didat.setup=function(args)
 	});
 	
 	args=args || {};
-	args.js		=args.js	 	||  "/js/";		// load js stuff from here
-	args.art	=args.art 		|| 	"/art/"; 	// local art
-	args.q		=args.q 		|| 	"/q"; 		// local q api
+	args.js		=args.js	 	||  "/js/";		// url to load js from
+	args.art	=args.art 		|| 	"/art/"; 	// url to load art from
+	args.q		=args.q 		|| 	"/q"; 		// url to access q api
 
 	if(!args.css) // can totally override with args
 	{
 		args.css=[
 				args.art+"/didat.css",
 				args.art+"chosen.min.css",
-				args.art+"typeahead.css"
 		];
 	}
 	if(args.css) { head.load(args.css); }
@@ -34,7 +33,7 @@ didat.setup=function(args)
 
 
 	didat.chunks={};
-	plate.push_namespace(require("../js/chunks.json")); //the main chunks
+	plate.push_namespace(require("./chunks.json")); //the main chunks
 	if(args.chunks)
 	{
 		plate.push_namespace(args.chunks); // override on load
