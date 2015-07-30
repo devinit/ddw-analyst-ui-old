@@ -13,9 +13,6 @@ var pgp_options = {};
 require("pg-monitor").attach(pgp_options);
 var pgp = require('pg-promise')(pgp_options);
 
-// use a readonly user so none of this code can do any damage
-var test_host = "postgres://test:test@localhost/didat";
-
 /* COLUMN NAMES
 year,
 donor_code,
@@ -105,7 +102,7 @@ rnmch
 // get pgp using given host or the default host
 db.start=function(host)
 {
-	return pgp( host || test_host );
+	return pgp( host || argv.database );
 };
 
 db.end=function()
