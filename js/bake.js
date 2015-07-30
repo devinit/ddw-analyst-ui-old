@@ -10,7 +10,7 @@ var util=require('util');
 var print=console.log;
 
 var plate=require("./plate.js");
-var db  =require('./db');
+var db  =require('./db.js');
 
 var ls=function(a) { console.log(util.inspect(a,{depth:null})); }
 

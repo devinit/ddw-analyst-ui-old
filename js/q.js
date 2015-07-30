@@ -3,18 +3,30 @@
 
 var q=exports;
 
-var util=require('util');
+var co=require('co');
 var fs=require('fs');
+var util=require('util');
 
-var print=function(a) { console.log(util.inspect(a,{depth:null})); }
+var print=console.log;
 
+var db=require('./db.js');
+
+
+q.write_json=function(res,dat){
+	res.jsonp(dat);
+};
 
 q.write_tsv=function(res,dat){
 
 	res.set('Content-Type', 'text/tab-separated-values');
-
+	
+	if(typeof(dat)=="object") // need just the table
+	{
+		dat=dat.results; // this should be the results table
+	}
+	
 	var head=[];
-	if(dat[0])
+	if(dat && dat[0])
 	{
 		for(var n in dat[0]) { head.push(n.split("\t").join(" ")); }
 		head.sort();
@@ -44,10 +56,60 @@ q.write_tsv=function(res,dat){
 // handle the /q url space
 q.serv=function(req,res){
 
+// use file extension as form and default to json
+	var form="json";
+	var aa=req.url.split(".");
+	if(aa[1]) { form=aa[1].split("?")[0]; }
+
+// expect the body to contain a json request that tells us what we want
+	var sql;
+	
+	if(req.body)
+	{
+		sql=req.body.sql
+//		print( JSON.stringify(req.body,null,'\t') );
+	}
+
 	var r={};
-	r.name="test";
 
+	var output=function(){
+		if(form=="json")
+		{
+			q.write_json(res,r);
+		}
+		else
+		if(form=="tsv")
+		{
+			q.write_tsv(res,r);
+		}
+	};
+	
+	if(sql) // perform a query
+	{		
+		co(function*(){
 
-	q.write_tsv(res,[r]);
+			var d=yield db.start().connect();					
+			r.results=yield d.query(sql);
+			d.done();
+
+		}).then(function(v){
+		
+			output();
+		
+		},function(e){
+			
+			r.error=e.toString();
+			output();
+
+//			console.error(e.stack);
+		});
+
+	}
+	else
+	{
+		r.error="missing sql"
+		output();
+	}
+	
 };
 
