@@ -1,4 +1,11 @@
 cd `dirname $0`
 
-iojs js/bake.js $*
+echo "bake"
+node js/bake.js
+
+echo "browserify"
+node node_modules/browserify/bin/cmd.js -r ./js/didat.js:didat -d -o www/js/didat.js
+
+echo "uglify"
+node node_modules/uglify-js/bin/uglifyjs www/js/didat.js -o www/js/didat.min.js
 

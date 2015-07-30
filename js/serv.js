@@ -25,7 +25,7 @@ app.use("/q",function (req, res) {
 });
 
 app.use(express.compress());
-app.use(express.static(__dirname+"/../static"));
+app.use(express.static(__dirname+"/../www"));
 
 console.log("Starting didat server at http://localhost:"+argv.port+"/");
 

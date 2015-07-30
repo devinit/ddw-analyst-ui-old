@@ -8,9 +8,6 @@ var plate=require("./plate.js");
 
 var ls=function(a) { console.log(util.inspect(a,{depth:null})); }
 
-
-try { fs.mkdirSync("json"); } catch(e){}
-
 var ff=fs.readdirSync("text");
 
 var tongues=[];
@@ -38,16 +35,17 @@ for(var i=0;i<ff.length;i++)
 	}
 }
 
-console.log("Writing json/chunks.json");
-fs.writeFileSync("json/chunks.json",JSON.stringify(chunks));
+console.log("Writing js/chunks.json");
+fs.writeFileSync("js/chunks.json",JSON.stringify(chunks));
 
-console.log("Writing json/tongues.js");
-var s=[];
-for(var i=0;i<tongues.length;i++)
+if(tongues.length>0)
 {
-	var v=tongues[i];
-	s.push("exports."+v+"=require(\"./"+v+".json\");\n")
+	console.log("Writing js/tongues.js");
+	var s=[];
+	for(var i=0;i<tongues.length;i++)
+	{
+		var v=tongues[i];
+		s.push("exports."+v+"=require(\"./"+v+".json\");\n")
+	}
+	fs.writeFileSync("js/tongues.js",s.join(""));
 }
-fs.writeFileSync("json/tongues.js",s.join(""));
-
-
