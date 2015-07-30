@@ -13,6 +13,40 @@ var db=require('./db.js');
 
 
 q.write_json=function(res,dat){
+	
+	if(dat.results)
+	{
+//		if(dat.results.length==1) // special single row results
+//		{
+//			dat.result=dat.results;
+//		}
+// fix results, into a csv style array of arrays
+		{
+			var head=[];
+			var data=[];
+			if(dat.results && dat.results[0])
+			{
+				for(var n in dat.results[0]) { head.push(n.split("\t").join(" ")); }
+//				head.sort();
+				data.push(head);
+				for(var i=0;i<dat.results.length;i++)
+				{
+					var v=dat.results[i];
+					var t=[];
+					head.forEach(function(n){
+						var s=v[n];
+						if("string" == typeof s) // may need to escape
+						{
+							s=s.split("\t").join(" "); // replace any possible tabs with spaces
+						}
+						t.push( s );
+					});
+					data.push(t);
+				}
+				dat.results=data;
+			}
+		}
+	}
 	res.jsonp(dat);
 };
 
@@ -39,7 +73,7 @@ q.write_tsv=function(res,dat){
 				var s=""+v[n];
 				if("string" == typeof s) // may need to escape
 				{
-					s=s.split("\t").join(" "); // remove any possible taba
+					s=s.split("\t").join(" "); // replace any possible tabs with spaces
 				}
 				t.push( s );
 			});
@@ -56,6 +90,8 @@ q.write_tsv=function(res,dat){
 // handle the /q url space
 q.serv=function(req,res){
 
+	var start_time=Date.now();
+
 // use file extension as form and default to json
 	var form="json";
 	var aa=req.url.split(".");
@@ -67,7 +103,6 @@ q.serv=function(req,res){
 	if(req.body)
 	{
 		sql=req.body.sql
-//		print( JSON.stringify(req.body,null,'\t') );
 	}
 
 	var r={};
@@ -75,6 +110,7 @@ q.serv=function(req,res){
 	var output=function(){
 		if(form=="json")
 		{
+			r.time=(Date.now()-start_time)/1000;
 			q.write_json(res,r);
 		}
 		else
@@ -85,7 +121,9 @@ q.serv=function(req,res){
 	};
 	
 	if(sql) // perform a query
-	{		
+	{
+		r.sql=sql; // spit the sql back
+		
 		co(function*(){
 
 			var d=yield db.start().connect();					
