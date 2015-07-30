@@ -33,7 +33,7 @@ didat.setup=function(args)
 
 
 	didat.chunks={};
-	plate.push_namespace(require("./chunks.json")); //the main chunks
+	plate.push_namespace(require("./text.json")); //the main chunks
 	if(args.chunks)
 	{
 		plate.push_namespace(args.chunks); // override on load

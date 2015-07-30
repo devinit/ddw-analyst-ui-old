@@ -10,7 +10,7 @@ node_modules
 
 # these are build by running ./bake so do not check them in
 
-js/chunks.json
+js/text.json
 www/js/didat.js
 www/js/didat.min.js
 
