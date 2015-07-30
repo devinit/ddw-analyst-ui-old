@@ -57,5 +57,25 @@ didat.setup=function(args)
 	didat.div.master.empty();
 	didat.div.master.html( plate.replace("{base}")  );
 
+	$(document).on( "click", "#query", function(){
+		
+//		console.log("CLICK Q");
+//		console.log($('#sqltext').val());
+		
+		var success=function(t){
+//			console.log("AJAX Q");
+			console.log(t);
+		};
+		$.ajax({
+			type: 'POST',
+			url: args.q,
+			data: JSON.stringify ({sql:$('#sqltext').val()}),
+			success: success,
+			contentType: "application/json",
+			dataType: 'json'
+		});
+
+	} );
+
 }
 

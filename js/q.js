@@ -100,6 +100,8 @@ q.serv=function(req,res){
 // expect the body to contain a json request that tells us what we want
 	var sql;
 	
+//print(req.body);
+
 	if(req.body)
 	{
 		sql=req.body.sql
