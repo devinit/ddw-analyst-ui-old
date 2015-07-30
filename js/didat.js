@@ -1,4 +1,4 @@
-// Copyright (c) 2014 International Aid Transparency Initiative (IATI)
+// Copyright (c) 2015 devinit.org
 // Licensed under the MIT license whose full text can be found at http://opensource.org/licenses/MIT
 
 var didat=exports;
