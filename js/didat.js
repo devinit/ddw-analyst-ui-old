@@ -86,6 +86,7 @@ didat.setup=function(args)
 			
 			$("#results").empty().html(ss.join(""));
 		};
+		$("#results").empty().html( plate.replace("{loading}") );
 		$.ajax({
 			type: 'POST',
 			url: args.q,
