@@ -25,8 +25,6 @@ strong, b, .bold		{font-weight:bold; color:inherit;}
 :focus					{outline:2px solid #53B4ED; outline:-webkit-focus-ring-color auto 5px;}
 :-moz-focusring			{outline:2px solid #53B4ED;}
 
-td {padding:4px;}
-
 
 /*	Wrappers
 	============================================= */
@@ -50,6 +48,7 @@ td {padding:4px;}
 /*	Results Table
 	============================================= */
 table				{width:100%;}	
+table td			{border-top:1px solid #ccc; border-left:1px solid #ccc;}
 	
 
 /*	Filter Options
