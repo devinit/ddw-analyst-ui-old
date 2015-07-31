@@ -1,6 +1,5 @@
-
 #loading
-<div> Loading... </div>
+<div class="query_wrap">Extracting...</div>
 
 #base
 <div class="navi_wrap">
@@ -31,16 +30,20 @@ LIMIT 10
 </div>
 
 #sql_buttons
-<div id="buttons"><a id="query" >QUERY</a></div>
+<div class="query_wrap que">
+	<div id="buttons"><a id="query" class="results">Search</a></div>
+</div>
 
 #sql_results
-<div id="results"></div>
+<div class="query_wrap scroll"><div id="results"></div></div>
 
 #sql_results_table
 <table>{it}</table>
+
 #sql_results_tr
 <tr>{it}</tr>
+
 #sql_results_td
-<td class="{it.hed}">
-<span>{it.txt}</span>
-</td>
+<td class="{it.hed}"><span>{it.txt}</span></td>
+
+#sql_results_th
