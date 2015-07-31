@@ -66,11 +66,6 @@ didat.setup=function(args)
 //			console.log("AJAX Q");
 			console.log(t);
 			
-			var ss=[];
-			var p=function(s){ ss.push(s); };
-			
-			p("<table id='results_table'>");
-
 			var heds=[];
 			var v=t.results[0];
 			for(var j=0;j<v.length;j++)
@@ -78,23 +73,21 @@ didat.setup=function(args)
 				heds[j]="result_"+$('<div/>').text(v[j]).html();
 			}
 
+			var itss=[];
 			for(var i=0;i<t.results.length;i++)
 			{
-				p("<tr>");
+				var its=[];
 				var v=t.results[i];
 				for(var j=0;j<v.length;j++)
 				{
-					var hed=heds[j];
-					var txt=$('<div/>').text(v[j]).html();
-					p("<td class='"+hed+"'>");
-					p( "<span>"+txt+"</span>" );
-					p("</td>");
+					var it={};
+					it.hed=heds[j];
+					it.txt=$('<div/>').text(v[j]).html();
+					its.push(plate.replace("{sql_results_td}",{it:it}));
 				}
-				p("</tr>");
+				itss.push(plate.replace("{sql_results_tr}",{it:its.join("")}));
 			}
-			p("</table>");
-			
-			$("#results").empty().html(ss.join(""));
+			$("#results").empty().html( plate.replace("{sql_results_table}",{it:itss.join("")}) );
 		};
 		$("#results").empty().html( plate.replace("{loading}") );
 		$.ajax({
