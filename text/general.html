@@ -1,5 +1,5 @@
 #loading
-<div class="query_wrap">Extracting...</div>
+<span>Extracting...</span>
 
 #base
 <div class="navi_wrap">
@@ -16,7 +16,7 @@
 {sql_results}
 
 #sql_textarea
-<div class="query_wrap">
+<div class="wrap">
 	<div id="textarea" class="query">
 		<textarea id="sqltext" type="text" class="type" placeholder="Type queries or choose filters below">
 SELECT 
@@ -30,15 +30,15 @@ LIMIT 10
 </div>
 
 #sql_buttons
-<div class="query_wrap que">
+<div class="search_wrap">
 	<div id="buttons"><a id="query" class="results">Search</a></div>
 </div>
 
 #sql_results
-<div class="query_wrap scroll"><div id="results"></div></div>
+<div class="wrap nopad"><div id="results"></div></div>
 
 #sql_results_table
-<table>{it}</table>
+<div class="table_wrap"><table>{it}</table></div>
 
 #sql_results_tr
 <tr>{it}</tr>
