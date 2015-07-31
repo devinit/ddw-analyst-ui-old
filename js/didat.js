@@ -65,6 +65,26 @@ didat.setup=function(args)
 		var success=function(t){
 //			console.log("AJAX Q");
 			console.log(t);
+			
+			var ss=[];
+			var p=function(s){ ss.push(s); };
+			
+			p("<table id='results_table'>");
+			for(var i=0;i<t.results.length;i++)
+			{
+				p("<tr>");
+				var v=t.results[i];
+				for(var j=0;j<v.length;j++)
+				{
+					p("<td>");
+					p( $('<div/>').text(v[j]).html() );
+					p("</td>");
+				}
+				p("</tr>");
+			}
+			p("</table>");
+			
+			$("#results").empty().html(ss.join(""));
 		};
 		$.ajax({
 			type: 'POST',
