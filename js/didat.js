@@ -70,14 +70,24 @@ didat.setup=function(args)
 			var p=function(s){ ss.push(s); };
 			
 			p("<table id='results_table'>");
+
+			var heds=[];
+			var v=t.results[0];
+			for(var j=0;j<v.length;j++)
+			{
+				heds[j]="result_"+$('<div/>').text(v[j]).html();
+			}
+
 			for(var i=0;i<t.results.length;i++)
 			{
 				p("<tr>");
 				var v=t.results[i];
 				for(var j=0;j<v.length;j++)
 				{
-					p("<td>");
-					p( $('<div/>').text(v[j]).html() );
+					var hed=heds[j];
+					var txt=$('<div/>').text(v[j]).html();
+					p("<td class='"+hed+"'>");
+					p( "<span>"+txt+"</span>" );
 					p("</td>");
 				}
 				p("</tr>");
