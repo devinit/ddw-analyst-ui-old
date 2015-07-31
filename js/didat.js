@@ -83,7 +83,14 @@ didat.setup=function(args)
 					var it={};
 					it.hed=heds[j];
 					it.txt=$('<div/>').text(v[j]).html();
-					its.push(plate.replace("{sql_results_td}",{it:it}));
+					if(i==0)
+					{
+						its.push(plate.replace("{sql_results_th}",{it:it}));
+					}
+					else
+					{
+						its.push(plate.replace("{sql_results_td}",{it:it}));
+					}
 				}
 				itss.push(plate.replace("{sql_results_tr}",{it:its.join("")}));
 			}
