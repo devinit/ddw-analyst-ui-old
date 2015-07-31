@@ -3,33 +3,35 @@
 <div> Loading... </div>
 
 #base
-
+<div class="navi_wrap">
+	<div class="navi">
+		<div class="navi_opt">
+			<a href="#"><img src="/art/dilogo.png" width="132" height="32"/></a>
+		</div><div class="navi_opt info">	
+			<span>DATA EXTRACTOR (Alpha Test)</span>
+		</div>
+	</div>
+</div>
 {sql_textarea}
 {sql_buttons}
 {sql_results}
 
 #sql_textarea
-
-<div id="textarea">
-<textarea id="sqltext" rows="10" cols="80">
-
+<div class="query_wrap">
+	<div id="textarea" class="query">
+		<textarea id="sqltext" type="text" class="type" placeholder="Type queries or choose filters below">
 SELECT 
 	*
 FROM crs_XX_21_04_2015
 WHERE
 	year = 2010
 LIMIT 10
-
-</textarea>
+		</textarea>
+	</div>
 </div>
 
 #sql_buttons
-
-<div id="buttons">
-<a id="query" >QUERY</a>
-</div>
+<div id="buttons"><a id="query" >QUERY</a></div>
 
 #sql_results
-
-<div id="results">
-</div>
+<div id="results"></div>
