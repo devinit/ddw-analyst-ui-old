@@ -11,7 +11,7 @@
 		</div>
 	</div>
 </div>
-{sql_textarea}
+{sql_parts}
 {sql_buttons}
 {sql_results}
 
@@ -23,15 +23,20 @@ SELECT
 	*
 FROM crs_XX_21_04_2015
 WHERE
-	year = 2010
-LIMIT 10
+	donor_code=12
 		</textarea>
 	</div>
 </div>
 
+#sql_download_form
+<form action="/q.tsv">
+<input id="sqltext_download" name="sql" type="text" style="display:none;"/>
+<input id="sqltext_download_submit" type="submit" value="Download" class="results" />
+</form>
+
 #sql_buttons
 <div class="search_wrap">
-	<div id="buttons"><a id="query" class="results">Search</a></div>
+	<div id="buttons"><a id="query" class="results">Preview 10 rows.</a></div>
 </div>
 
 #sql_results
@@ -39,6 +44,7 @@ LIMIT 10
 
 #sql_results_table
 <div class="table_wrap"><table>{it}</table></div>
+<div id="buttons"><a id="download" class="results" style="display:none;">Download all as a .TSV file</a></div>
 
 #sql_results_tr
 <tr>{it}</tr>
@@ -48,3 +54,42 @@ LIMIT 10
 
 #sql_results_th
 <th class="{it.hed}"><span>{it.txt}</span></th>
+
+#sql_results_error
+<div>{it}</div>
+
+#sql_parts
+<div class="parts wrap"></div>
+
+#part_group
+<div class="group">{it}</div>
+
+#part_line_top
+<div class="line">[-] {it} [edit] {part_line_add}</div>
+#part_line
+<div class="line">{part_line_remove}{it}{part_line_edit}{part_line_add}</div>
+
+#part_line_remove
+<a class="line_remove">[-]</a>
+
+#part_line_edit
+<a class="line_edit">[edit]</a>
+
+#part_line_add
+<a class="line_add">[+]</a>
+
+#part_line_text
+<input type="text" class="line_text"></input>
+
+#part_line_sql_text
+<input type="text" class="line_sql_text"></input>
+#part_line_sql_select
+<span class="line_sql_select">SELECT</span>
+#part_line_sql_column
+<select class="line_sql_column">*</select>
+#part_line_sql_from
+<span class="line_sql_select">FROM {part_line_sql_table}</span>
+#part_line_sql_table
+<select class="line_sql_table"></select>
+#part_line_sql_where
+<span class="line_sql_where">WHERE</span>

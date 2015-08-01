@@ -3,7 +3,7 @@
 
 var didat=exports;
 
-var plate=require("./plate.js")
+var plate=require("./plate.js");
 
 
 didat.setup=function(args)
@@ -31,7 +31,6 @@ didat.setup=function(args)
 	didat.args=args;
 
 
-
 	didat.chunks={};
 	plate.push_namespace(require("./text.json")); //the main chunks
 	if(args.chunks)
@@ -55,58 +54,12 @@ didat.setup=function(args)
 	didat.div={};
 	didat.div.master=$(didat.args.master);
 	didat.div.master.empty();
-	didat.div.master.html( plate.replace("{base}")  );
+	didat.div.master.html( plate.replace("{base}") );
 
-	$(document).on( "click", "#query", function(){
-		
-//		console.log("CLICK Q");
-//		console.log($('#sqltext').val());
-		
-		var success=function(t){
-//			console.log("AJAX Q");
-			console.log(t);
-			
-			var heds=[];
-			var v=t.results[0];
-			for(var j=0;j<v.length;j++)
-			{
-				heds[j]="result_"+$('<div/>').text(v[j]).html();
-			}
+// and setup other bits
 
-			var itss=[];
-			for(var i=0;i<t.results.length;i++)
-			{
-				var its=[];
-				var v=t.results[i];
-				for(var j=0;j<v.length;j++)
-				{
-					var it={};
-					it.hed=heds[j];
-					it.txt=$('<div/>').text(v[j]).html();
-					if(i==0)
-					{
-						its.push(plate.replace("{sql_results_th}",{it:it}));
-					}
-					else
-					{
-						its.push(plate.replace("{sql_results_td}",{it:it}));
-					}
-				}
-				itss.push(plate.replace("{sql_results_tr}",{it:its.join("")}));
-			}
-			$("#results").empty().html( plate.replace("{sql_results_table}",{it:itss.join("")}) );
-		};
-		$("#results").empty().html( plate.replace("{loading}") );
-		$.ajax({
-			type: 'POST',
-			url: args.q,
-			data: JSON.stringify ({sql:$('#sqltext').val()}),
-			success: success,
-			contentType: "application/json",
-			dataType: 'json'
-		});
-
-	} );
+	require("./tables.js").setup();
+	require("./lines.js").setup();
 
 }
 

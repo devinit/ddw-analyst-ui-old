@@ -70,10 +70,19 @@ q.write_tsv=function(res,dat){
 			var v=dat[i];
 			var t=[];
 			head.forEach(function(n){
-				var s=""+v[n];
+				var s=v[n];
 				if("string" == typeof s) // may need to escape
 				{
 					s=s.split("\t").join(" "); // replace any possible tabs with spaces
+				}
+				else
+				if(s===null)
+				{
+					s=""; // nulls are just blank
+				}
+				else
+				{
+					s=""+s; // force to string
 				}
 				t.push( s );
 			});
@@ -102,10 +111,18 @@ q.serv=function(req,res){
 	
 //print(req.body);
 
-	if(req.body)
+	if(req.body && req.body.sql)
 	{
 		sql=req.body.sql
 	}
+	else
+	if(req.query && req.query.sql)
+	{
+		sql=req.query.sql
+	}
+print(req.body);
+print(req.query);
+print(sql);
 
 	var r={};
 
@@ -121,7 +138,7 @@ q.serv=function(req,res){
 			q.write_tsv(res,r);
 		}
 	};
-	
+
 	if(sql) // perform a query
 	{
 		r.sql=sql; // spit the sql back

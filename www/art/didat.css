@@ -86,3 +86,8 @@ a.filter:hover span	{color:#ba0c2f;}
 	============================================= */
 a.results			{display:inline-block; vertical-align:top; background-color:#1f1e1d; border-radius:4px; padding:10px 20px; text-align:center; color:#FFF; margin-left:10px; margin-right:10px; font-size:1.2em;}
 a.results:hover		{box-shadow:0 1px 6px rgba(0,0,0,.3);}
+
+
+.line_text , part_line_sql_select , part_line_sql_column , part_line_sql_from , part_line_sql_table , part_line_sql_where 
+{ width:600px; }
+
