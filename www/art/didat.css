@@ -6,7 +6,7 @@ a,img{border:0; outline:none;}textarea:focus,input:focus{outline:0;}*:focus{outl
 
 img						{-webkit-filter:brightness(200%); filter:brightness(200%);}
 
-body,html 				{background:none; color:rgb(31, 30, 29); width:100%; height:100%; margin:0; padding:0; font-family:"Fira Sans", sans-serif; text-rendering:optimizelegibility; word-wrap:break-word;}
+body,html 				{background:none; color:rgba(31,30,29,1); width:100%; height:100%; margin:0; padding:0; font-family:'FiraSans', sans-serif; text-rendering:optimizelegibility; word-wrap:break-word;}
 html					{background-color:#fff;}
 body					{font-size:14px; line-height:21px;}
 
@@ -25,6 +25,22 @@ strong, b, .bold		{font-weight:bold; color:inherit;}
 :focus					{outline:2px solid #53B4ED; outline:-webkit-focus-ring-color auto 5px;}
 :-moz-focusring			{outline:2px solid #53B4ED;}
 
+@font-face {
+font-family: 'FiraSans';
+src: url('fonts/FiraSans-Regular.eot');
+src: local('☺'), url('fonts/FiraSans-Regular.woff') format('woff'), url('fonts/FiraSans-Regular.ttf') format('truetype'), url('fonts/FiraSans-Regular.svg') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'FiraSans-Bold';
+src: url('fonts/FiraSans-Bold.eot');
+src: local('☺'), url('fonts/FiraSans-Bold.woff') format('woff'), url('fonts/FiraSans-Bold.ttf') format('truetype'), url('fonts/FiraSans-Bold.svg') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
 
 /*	Wrappers
 	============================================= */
@@ -32,7 +48,7 @@ strong, b, .bold		{font-weight:bold; color:inherit;}
 .navi				{width:1170px; height:60px; margin:0 auto; box-sizing:border-box; padding:10px 15px 15px 15px;}
 .navi_opt			{display:inline-block; vertical-align:text-bottom;}
 .navi_opt.info		{width:1008px; text-align:right;}
-.navi_opt span		{color:#FFF; font-size:1em; font-weight:bold;}
+.navi_opt span		{color:#FFF; font-size:1em; font-family:'FiraSans-Bold',sans-serif;}
 .wrap, .filter_wrap	{width:1170px; margin:0 auto; box-sizing:border-box; padding:40px 15px 0 15px;}
 .wrap.nopad			{padding:0; width:960px;}
 .search_wrap		{width:960px; margin:0 auto; padding:40px 0; text-align:center;}
@@ -43,7 +59,8 @@ strong, b, .bold		{font-weight:bold; color:inherit;}
 
 /*	Query block
 	============================================= */
-.type				{width:960px; height:180px; padding:8px 12px; font-size:1em; line-height:1.45em; -webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; outline:none; border:1px solid #ccc; font-family:"Fira Sans",sans-serif;}
+.type			{width:960px; height:180px; padding:8px 12px; -webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; outline:none; border:1px solid #ccc;}
+textarea.type	{font-size:1.1em; line-height:1.45em;font-family:'FiraSans',sans-serif; color:rgba(31,30,29,1);}
 
 
 /*	Results Table
@@ -58,6 +75,8 @@ th.result_region_name		{min-width:250px;}
 
 th.result_short_description, th.result_project_title,
 th.result_long_description	{min-width:300px;}
+
+td.result_long_description span	{max-height:200px; display:block; overflow-y:auto; line-height:normal;}
 	
 
 /*	Filter Options
