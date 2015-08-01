@@ -63,7 +63,6 @@ q.write_tsv=function(res,dat){
 	if(dat && dat[0])
 	{
 		for(var n in dat[0]) { head.push(n.split("\t").join(" ")); }
-		head.sort();
 		res.write(	head.join("\t")+"\n" ); // header
 		for(var i=0;i<dat.length;i++)
 		{

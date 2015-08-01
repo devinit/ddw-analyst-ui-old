@@ -31,6 +31,7 @@ lines.setup=function()
 		"FROM crs_XX_21_04_2015",
 		"WHERE donor_code=12",
 		"AND year=1979",
+		"ORDER BY 1",
 	];
 	$(".parts").empty();
 	var l=$( plate.replace("{part_line_top}",{it:"{part_line_text}"}) );
@@ -56,5 +57,5 @@ lines.allstrings=function()
 
 lines.allstrings_limit=function(n)
 {
-	return lines.allstrings()+" LIMIT 10";
+	return lines.allstrings().split("LIMIT")[0]+" LIMIT 10";
 }
