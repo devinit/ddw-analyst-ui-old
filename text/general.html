@@ -1,7 +1,7 @@
 #loading
 <span>Extracting...</span>
 
-#base
+#head
 <div class="navi_wrap">
 	<div class="navi">
 		<div class="navi_opt">
@@ -11,21 +11,36 @@
 		</div>
 	</div>
 </div>
-{sql_parts}
-{sql_buttons}
-{sql_results}
+
+#foot
+<div class="foot_wrap">
+	<div class="foot">
+		<div class="foot_copy">
+			<span>© Development Initiatives Data Extractor (Alpha Test) 2015.</span>
+		</div>
+	</div>
+</div>
+
+#base
+{head}
+<div class="main_wrap">
+	<div class="cont_wrap">
+		{sql_parts}
+		{sql_buttons}
+		{sql_results}
+	</div>
+	{foot}
+</div>
 
 #sql_textarea
-<div class="wrap">
-	<div id="textarea" class="query">
-		<textarea id="sqltext" type="text" class="type" placeholder="Type queries or choose filters below">
+<div id="textarea" class="query">
+	<textarea id="sqltext" type="text" class="type" placeholder="Type queries or choose filters below">
 SELECT 
 	*
 FROM crs_XX_21_04_2015
 WHERE
 	donor_code=12
-		</textarea>
-	</div>
+	</textarea>
 </div>
 
 #sql_download_form
@@ -36,15 +51,15 @@ WHERE
 
 #sql_buttons
 <div class="search_wrap">
-	<div id="buttons"><a id="query" class="results">Preview 10 rows.</a></div>
+	<div id="buttons"><a id="query" class="results">Preview 10 rows</a></div>
 </div>
 
 #sql_results
-<div class="wrap nopad"><div id="results"></div></div>
+<div id="results"></div>
 
 #sql_results_table
 <div class="table_wrap"><table>{it}</table></div>
-<div id="buttons"><a id="download" class="results" style="display:none;">Download all as a .TSV file</a></div>
+<div id="buttons"><a id="download" class="results" style="display:none;">Download all as .TSV</a></div>
 
 #sql_results_tr
 <tr>{it}</tr>
