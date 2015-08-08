@@ -80,9 +80,9 @@ WHERE
 <div class="group">{it}</div>
 
 #part_line_top
-<div class="line">[-] {it} [edit] {part_line_add}</div>
+<div>{part_line_edit}</div>
 #part_line
-<div class="line">{part_line_remove}{it}{part_line_edit}{part_line_add}</div>
+<div class="line">{part_line_remove}{it}{part_line_add}</div>
 
 #part_line_remove
 <a class="line_remove">[-]</a>
@@ -95,6 +95,13 @@ WHERE
 
 #part_line_text
 <input type="text" class="line_text"></input>
+<span style="display:none;"class="line_span"></span>
+
+#part_line_select
+<select class="line_select">{it:part_line_select_option}</select>
+#part_line_select_option
+<option value="{it.id}" {it.selected}>{it.id}</option>
+
 
 #part_line_sql_text
 <input type="text" class="line_sql_text"></input>
