@@ -153,7 +153,7 @@ bake.dbjson=function(){
 		"rnmch"
 	];
 
-	ds.tables=["crs_XX_21_04_2015"];
+	ds.tables=["crs_1973_2013"];
 	for(var y=1973;y<=2013;y++)
 	{
 		ds.tables.push("crs_"+(""+y).substring(2,3)+"0_21_04_2015.crs_"+y);
@@ -171,7 +171,7 @@ bake.dbjson=function(){
 			var tt=pp[i][1];
 			if(tt)
 			{
-				var r=yield d.query("SELECT DISTINCT ON ($1^,$2^) $1^,$2^ FROM crs_XX_21_04_2015 ORDER BY $1^,$2^;",[id,tt]);
+				var r=yield d.query("SELECT DISTINCT ON ($1^,$2^) $1^,$2^ FROM crs_1973_2013 ORDER BY $1^,$2^;",[id,tt]);
 				
 				ds[id]={};
 //				ds[tt]={};

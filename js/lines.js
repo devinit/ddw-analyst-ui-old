@@ -169,7 +169,7 @@ lines.setup=function()
 		"SELECT",
 		"*",
 //		"FROM crs_XX_21_04_2015",
-		"FROM crs_1793_2013",
+		"FROM crs_1973_2013",
 		"WHERE donor_code=12",
 		"AND year=1979",
 		"ORDER BY 1",
