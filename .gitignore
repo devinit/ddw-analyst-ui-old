@@ -2,6 +2,10 @@
 
 tmp
 
+#serv file containing connection settings
+
+serv_with_settings
+
 
 # run npm install to the node dependencies
 
