@@ -123,8 +123,8 @@ db.test=function()
 		ts.push("SELECT * FROM crs_"+(""+y).substring(2,3)+"0_21_04_2015.crs_"+y);
 	}
 	print();
-	print("CREATE OR REPLACE VIEW crs_XX_21_04_2015 AS " + ts.join(" UNION ALL ") + ";");
-	print("GRANT SELECT ON crs_XX_21_04_2015 TO PUBLIC;")
+	print("CREATE OR REPLACE VIEW crs_all AS " + ts.join(" UNION ALL ") + ";");
+	print("GRANT SELECT ON crs_all TO PUBLIC;")
 	print();
 
 
@@ -135,10 +135,10 @@ db.test=function()
 
 		var d=yield db.start().connect();
 		
-//		var r=yield d.query("EXPLAIN ANALYSE SELECT distinct(year) FROM crs_XX_21_04_2015;");
+//		var r=yield d.query("EXPLAIN ANALYSE SELECT distinct(year) FROM crs_all;");
 //		print(r);
 		
-		var r=yield d.query("SELECT DISTINCT year FROM crs_XX_21_04_2015 ORDER BY 1;");
+		var r=yield d.query("SELECT DISTINCT year FROM crs_all ORDER BY 1;");
 		print(r);
 
 		d.done();
